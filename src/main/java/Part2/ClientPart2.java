@@ -55,7 +55,6 @@ public class ClientPart2 {
         completedStartUp.await();
         csvPrinter.close();
         long startUpEndTime = System.currentTimeMillis();
-        System.out.println("Failed request " + failedRequests);
         System.out.println("[Start Up]: The initialization phase completed in " + (startUpEndTime - startUpStartTime) + " milliseconds");
         System.out.println("[Start UP]: Throughput " + NUMTHREADS * 200 * 1000 / (startUpEndTime - startUpStartTime) + " req/sec");
 

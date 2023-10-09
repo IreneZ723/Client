@@ -29,7 +29,9 @@ import java.io.IOException;
 import io.swagger.client.model.AlbumInfo;
 import io.swagger.client.model.AlbumsProfile;
 import io.swagger.client.model.ErrorMsg;
+
 import java.io.File;
+
 import io.swagger.client.model.ImageMetaData;
 
 import java.lang.reflect.Type;
@@ -59,18 +61,19 @@ public class DefaultApi {
 
     /**
      * Build call for getAlbumByKey
-     * @param albumID path  parameter is album key to retrieve (required)
-     * @param progressListener Progress listener
+     *
+     * @param albumID                 path  parameter is album key to retrieve (required)
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getAlbumByKeyCall(String albumID, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/albums/{albumID}"
-            .replaceAll("\\{" + "albumID" + "\\}", apiClient.escapeString(albumID.toString()));
+                .replaceAll("\\{" + "albumID" + "\\}", apiClient.escapeString(albumID.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -80,52 +83,49 @@ public class DefaultApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
                 public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[]{};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getAlbumByKeyValidateBeforeCall(String albumID, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'albumID' is set
         if (albumID == null) {
             throw new ApiException("Missing the required parameter 'albumID' when calling getAlbumByKey(Async)");
         }
-        
+
         com.squareup.okhttp.Call call = getAlbumByKeyCall(albumID, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
+
     }
 
     /**
      * get album by key
-     * 
+     *
      * @param albumID path  parameter is album key to retrieve (required)
      * @return AlbumInfo
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -137,21 +137,22 @@ public class DefaultApi {
 
     /**
      * get album by key
-     * 
+     *
      * @param albumID path  parameter is album key to retrieve (required)
      * @return ApiResponse&lt;AlbumInfo&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<AlbumInfo> getAlbumByKeyWithHttpInfo(String albumID) throws ApiException {
         com.squareup.okhttp.Call call = getAlbumByKeyValidateBeforeCall(albumID, null, null);
-        Type localVarReturnType = new TypeToken<AlbumInfo>(){}.getType();
+        Type localVarReturnType = new TypeToken<AlbumInfo>() {
+        }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * get album by key (asynchronously)
-     * 
-     * @param albumID path  parameter is album key to retrieve (required)
+     *
+     * @param albumID  path  parameter is album key to retrieve (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -178,22 +179,25 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = getAlbumByKeyValidateBeforeCall(albumID, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AlbumInfo>(){}.getType();
+        Type localVarReturnType = new TypeToken<AlbumInfo>() {
+        }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+
     /**
      * Build call for newAlbum
-     * @param image  (required)
-     * @param profile  (required)
-     * @param progressListener Progress listener
+     *
+     * @param image                   (required)
+     * @param profile                 (required)
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call newAlbumCall(File image, AlbumsProfile profile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/albums";
 
@@ -204,38 +208,38 @@ public class DefaultApi {
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         if (image != null)
-        localVarFormParams.put("image", image);
+            localVarFormParams.put("image", image);
         if (profile != null)
-        localVarFormParams.put("profile", profile);
+            localVarFormParams.put("profile", profile);
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "multipart/form-data"
+                "multipart/form-data"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
                 public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[]{};
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call newAlbumValidateBeforeCall(File image, AlbumsProfile profile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'image' is set
@@ -246,21 +250,18 @@ public class DefaultApi {
         if (profile == null) {
             throw new ApiException("Missing the required parameter 'profile' when calling newAlbum(Async)");
         }
-        
+
         com.squareup.okhttp.Call call = newAlbumCall(image, profile, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
+
     }
 
     /**
      * Returns the new key and size of an image in bytes.
-     * 
-     * @param image  (required)
-     * @param profile  (required)
+     *
+     * @param image   (required)
+     * @param profile (required)
      * @return ImageMetaData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -271,22 +272,23 @@ public class DefaultApi {
 
     /**
      * Returns the new key and size of an image in bytes.
-     * 
-     * @param image  (required)
-     * @param profile  (required)
+     *
+     * @param image   (required)
+     * @param profile (required)
      * @return ApiResponse&lt;ImageMetaData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<ImageMetaData> newAlbumWithHttpInfo(File image, AlbumsProfile profile) throws ApiException {
         com.squareup.okhttp.Call call = newAlbumValidateBeforeCall(image, profile, null, null);
-        Type localVarReturnType = new TypeToken<ImageMetaData>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageMetaData>() {
+        }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Returns the new key and size of an image in bytes. (asynchronously)
-     * 
-     * @param image  (required)
+     *
+     * @param image    (required)
      * @param profile  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -314,7 +316,8 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = newAlbumValidateBeforeCall(image, profile, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ImageMetaData>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageMetaData>() {
+        }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

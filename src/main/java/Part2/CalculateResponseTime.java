@@ -45,6 +45,8 @@ public class CalculateResponseTime {
         CSVParser csvParser = CSVParser.parse(fileReader, CSVFormat.DEFAULT);
 
         for (CSVRecord record : csvParser) {
+            
+            if (record.get(0).equals("startTime")) continue;
             if (record.size() == 4 && !record.get(0).isEmpty() && !record.get(1).isEmpty() && !record.get(2).isEmpty() && !record.get(3).isEmpty()) {
                 ResponseRecord responseRecord = new ResponseRecord(
                         record.get(0), // Timestamp

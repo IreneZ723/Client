@@ -11,7 +11,7 @@ public class DefaultApiExample {
 
         DefaultApi apiInstance = new DefaultApi();
         ApiClient apiClient = apiInstance.getApiClient();
-        apiClient.setBasePath("http://54.185.208.245:8080");
+        apiClient.setBasePath("http://54.244.63.107:8080");
         String albumID = "3"; // String | path  parameter is album key to retrieve
         try {
             AlbumInfo result = apiInstance.getAlbumByKey(albumID);
